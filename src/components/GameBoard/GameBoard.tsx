@@ -1,27 +1,21 @@
-import Card from '../Card/Card';
-import './GameBoard.css'
-
+import "./GameBoard.css";
+import Host from "../Host/Host";
+import Player from "../Player/Player";
 
 interface GameBoardProps {
-    children?: React.ReactNode
+  children?: React.ReactNode;
 }
 
-function GameBoard({children}: GameBoardProps) {
-    const cards = [
-        {value: '10', suit: 'Hearts'},
-        {value: 'Jack', suit: 'Spades'},
-    ]
+function GameBoard({ children }: GameBoardProps) {
+  return (
+    <div className="game-board">
+      <h2>Host</h2>
+      <Host />
 
-    return (
-        <div className='game-board'>
-            <h2>Blackjack Game</h2>
-            <div className="card-container">
-                {cards.map((card, index) => (
-                    <Card key={index} value={card.value} suit={card.suit}></Card>
-                ))}
-            </div>
-        </div>
-    )
+      <h2>Player</h2>
+      <Player name="John" fund={100.0} />
+    </div>
+  );
 }
 
 export default GameBoard;

@@ -2,8 +2,8 @@ import "./Card.css";
 
 // Types for the suit and value of a card
 const suit = ["Spades", "Hearts", "Diamonds", "Clubs"];
-type Suit = (typeof suit)[number];
-const isSuit = (x: any): x is Suit => suit.includes(x);
+type SuitType = (typeof suit)[number];
+const isSuit = (x: any): x is SuitType => suit.includes(x);
 
 const cardValue = [
   "Ace",
@@ -20,19 +20,21 @@ const cardValue = [
   "Queen",
   "King",
 ];
-type CardValue = (typeof cardValue)[number];
-const isCardValue = (x: any): x is CardValue => cardValue.includes(x);
+type CardValueType = (typeof cardValue)[number];
+const isCardValue = (x: any): x is CardValueType => cardValue.includes(x);
 
 interface CardProps {
-  suit: Suit;
-  value: CardValue;
+  suit: SuitType;
+  value: CardValueType;
 }
 
 function Card({ suit, value }: CardProps) {
   return (
     <div className="card">
-      <div className="card-value">{isCardValue(value) ? value : "error"}</div>
-      <div className="card-suit">{isSuit(suit) ? suit : "error"}</div>
+      <div className="card-value">
+        {isCardValue(value) ? value : "Error value"}
+      </div>
+      <div className="card-suit">{isSuit(suit) ? suit : "Error suit"}</div>
     </div>
   );
 }
